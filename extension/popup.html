@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        width: 300px;
+        margin: 0;
+        padding: 16px;
+        font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+        font-size: 13px;
+        color: #202124;
+      }
+      h3 {
+        margin: 0 0 12px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+      #status {
+        min-height: 18px;
+        margin-bottom: 12px;
+        color: #5f6368;
+        line-height: 1.5;
+        word-break: break-all;
+      }
+      #status.ok {
+        color: #188038;
+      }
+      #status.err {
+        color: #d93025;
+      }
+      button {
+        width: 100%;
+        padding: 9px;
+        border: none;
+        border-radius: 6px;
+        background: #1a73e8;
+        color: #fff;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      button:disabled {
+        background: #9aa0a6;
+        cursor: default;
+      }
+      label {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin: 12px 0 4px;
+        color: #5f6368;
+        font-size: 12px;
+      }
+      .hint {
+        margin-top: 10px;
+        color: #80868b;
+        font-size: 11px;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>视频字幕导出</h3>
+    <div id="status">正在检测当前页面…</div>
+    <button id="go" disabled>导出为 txt</button>
+    <label><input type="checkbox" id="header" checked /> 包含元信息头</label>
+    <div class="hint">导出文件名即视频标题。若无字幕，会自动尝试开启播放器字幕再捕获。</div>
+    <script src="popup.js"></script>
+  </body>
+</html>

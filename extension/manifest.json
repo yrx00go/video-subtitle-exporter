@@ -1,0 +1,55 @@
+{
+  "manifest_version": 3,
+  "name": "视频字幕导出",
+  "version": "0.1.0",
+  "description": "导出 YouTube / B站 视频字幕为 txt，文件名即视频标题",
+  "permissions": [
+    "scripting",
+    "activeTab",
+    "downloads",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://*.youtube.com/*",
+    "https://*.bilibili.com/*",
+    "https://*.hdslb.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.youtube.com/*",
+        "https://www.bilibili.com/*"
+      ],
+      "js": [
+        "content/sniffer-main.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://*.youtube.com/*",
+        "https://www.bilibili.com/*"
+      ],
+      "js": [
+        "content/main.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "导出字幕"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "minimum_chrome_version": "111"
+}
